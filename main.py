@@ -14,3 +14,4 @@ while cap.isOpened():
         break
 
 cap.release()  # deallocates memory and clears
+
