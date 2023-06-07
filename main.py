@@ -1,5 +1,6 @@
 # importing needed modules
 import cv2 as cv
+from module.preprocessing import *
 
 cap = cv.VideoCapture(0)  # creating video capture object
 cap.set(3, 640)  # setting width of frame
@@ -9,6 +10,7 @@ cap.set(4, 480)  # setting height of frame
 while cap.isOpened():
     ret, img = cap.read()
     if ret:
+        cv.imshow('edited',preProcessing(img))  # preprocessed image
         cv.imshow("window", img)
     if cv.waitKey(1) == ord('q'):  # stop capturing when user interrupts
         break
