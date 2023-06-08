@@ -7,10 +7,12 @@ cap = cv.VideoCapture(0)  # creating video capture object
 cap.set(3, 640)  # setting width of frame
 cap.set(4, 480)  # setting height of frame
 
+
 # creating a trackbar window
 cv.namedWindow("edge")
 cv.createTrackbar('start', 'edge', 50, 255, empty)
 cv.createTrackbar('end', 'edge', 100, 250, empty)
+
 
 # capturing video (images) for detecting object using a while loop
 while cap.isOpened():

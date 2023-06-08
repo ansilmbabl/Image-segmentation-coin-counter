@@ -9,7 +9,11 @@ def empty(a):
 
 def preProcessing(img, trackbar=False):
     """
-    returns pre-processed image which include Gaussian blurring, Canny edge detection, dilation steps
+    pre-process the image which includes;
+    GaussianBlur: blur the image so that we won't mess up with the sharp edges
+    canny: detect the edges of the objects
+    dilation : thickens the edges
+    morphologyEx : close the small areas (if nay)
 
     :param img: image to be processed
     :param trackbar: trackbar position to set canny edge detection thresholds
