@@ -1,6 +1,7 @@
 # importing needed modules
-
-from module.preprocessing import *
+import cv2 as cv
+import numpy as np
+from module.preprocessing import preProcessing, empty
 
 cap = cv.VideoCapture(0)  # creating video capture object
 cap.set(3, 640)  # setting width of frame
