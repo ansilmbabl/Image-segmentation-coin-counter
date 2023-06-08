@@ -1,4 +1,5 @@
 # importing needed modules
+import cv2
 import cv2 as cv
 import numpy as np
 from module.preprocessing import preProcessing, empty
@@ -18,7 +19,10 @@ cv.createTrackbar('end', 'edge', 100, 250, empty)
 while cap.isOpened():
     ret, img = cap.read()
     if ret:
-        cv.imshow('edited', preProcessing(img, trackbar=True))  # preprocessed image
+        img_pre = preProcessing(img, trackbar=True)
+        cv.imshow('edited', img_pre)  # preprocessed image
+        cnt, hir = cv.findContours(img_pre, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        # cv.imshow("cnt", cnt)
         cv.imshow("window", img)
     if cv.waitKey(1) == ord('q'):  # stop capturing when user interrupts
         break
