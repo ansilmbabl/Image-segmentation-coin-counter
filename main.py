@@ -23,9 +23,8 @@ while cap.isOpened():
         cv.imshow('edited', img_pre)  # preprocessed image
         # finding contours
         cnt, hir = cv.findContours(img_pre, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-        drawing = np.zeros((img_pre.shape[0], img_pre.shape[1], 3), dtype=np.uint8)
-        cv.drawContours(drawing,cnt,1,(255,255,0),3)
-        cv.imshow("draw", drawing)
+        cv.drawContours(img,cnt,-1,(0,255,0),3)
+        
         # drawing bounding rectangle
         for i in cnt:
             x,y,w,h = cv.boundingRect(i)
