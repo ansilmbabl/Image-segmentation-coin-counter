@@ -4,6 +4,7 @@ import cv2 as cv
 import numpy as np
 from module.preprocessing import preProcessing, empty
 from module.window import window
+from module.circle import DrawCircle
 
 cap = cv.VideoCapture("http://192.168.1.72:8080/video")  # creating video capture object
 
@@ -19,14 +20,8 @@ while cap.isOpened():
         img_pre = preProcessing(img, trackbar=True)
         window('edited', img_pre)  # preprocessed image
         # drawing circles
-        circles = cv.HoughCircles(img_pre, cv2.HOUGH_GRADIENT, dp=1, minDist=90, param1=50, param2=30, minRadius=100, maxRadius=200)
-        if circles is not None:
-            circles = np.uint16(np.around(circles))
-            for circle in circles[0,:]:
-                center = (circle[0],circle[1])
-                radius = circle[2]
-                cv.circle(img,center,radius,(0,0,255),3)
-        cv.imshow("webcam", img)
+        DrawCircle(img,img_pre)
+        
     if cv.waitKey(1) == ord('q'):  # stop capturing when user interrupts
         break
 
