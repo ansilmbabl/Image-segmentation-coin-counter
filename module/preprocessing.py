@@ -27,7 +27,7 @@ def preProcessing(img, trackbar=False):
         end = cv.getTrackbarPos('end', 'edge')
         img = cv.Canny(img, start, end)
     else:
-        img = cv.Canny(img, 50, 250)
+        img = cv.Canny(img, 250, 250)
     kernel = np.ones((3, 3), np.uint8)  # kernel for dilation
     img = cv.dilate(img, kernel, iterations=1)
     img = cv.morphologyEx(img, cv2.MORPH_CLOSE, kernel)

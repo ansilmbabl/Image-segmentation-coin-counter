@@ -5,6 +5,7 @@ from module.window import window
 
 def DrawCircle(image, preprocess_image, dp=1, minDist=90, param1=50, param2=30, minRadius=100,
                maxRadius=200):
+    # global center
     circles = cv.HoughCircles(preprocess_image, cv.HOUGH_GRADIENT, dp=dp, minDist=minDist, param1=param1, param2=param2,
                               minRadius=minRadius,
                               maxRadius=maxRadius)
@@ -15,3 +16,4 @@ def DrawCircle(image, preprocess_image, dp=1, minDist=90, param1=50, param2=30, 
             radius = circle[2]
             cv.circle(image, center, radius, (0, 0, 255), 3)
             window("webcam", image)
+            return {"center":center, "radius":radius}
