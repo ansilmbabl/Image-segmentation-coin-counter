@@ -20,7 +20,8 @@ def preProcessing(img, trackbar=False):
     :return: pre-processed image
     """
 
-    img = cv.GaussianBlur(img, (5, 5), 10)
+    img = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+    img = cv.GaussianBlur(img, (5, 5), 5)
     if trackbar:
         start = cv.getTrackbarPos('start', 'edge')
         end = cv.getTrackbarPos('end', 'edge')

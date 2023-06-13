@@ -5,11 +5,10 @@ import numpy as np
 from module.preprocessing import preProcessing, empty
 from module.window import window
 
-
 cap = cv.VideoCapture("http://192.168.1.72:8080/video")  # creating video capture object
 
 # creating a trackbar window
-window('edge',width=500,height=50)
+window('edge', width=500, height=50)
 cv.createTrackbar('start', 'edge', 50, 255, empty)
 cv.createTrackbar('end', 'edge', 100, 250, empty)
 
@@ -19,22 +18,15 @@ while cap.isOpened():
     if ret:
         img_pre = preProcessing(img, trackbar=True)
         window('edited', img_pre)  # preprocessed image
-        # finding contours
-        cnt, hir = cv.findContours(img_pre, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        print(len(cnt))
-
-        # drawing bounding rectangle
-        for i in cnt:
-              if 90 >= len(cnt) >= 180:
-                # contour_perimeter = cv.arcLength(cnt,closed=True)
-                # print(contour_perimeter)
-                # contour_area = cv.contourArea(cnt)
-                cv.drawContours(img, cnt, -1, (0, 255, 0), 3)
-                x, y, w, h = cv.boundingRect(i)
-                cv.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 4)
-
-        window("cnt", img_pre)
-        window("webcam", img)
+        # drawing circles
+        circles = cv.HoughCircles(img_pre, cv2.HOUGH_GRADIENT, dp=1, minDist=90, param1=50, param2=30, minRadius=100, maxRadius=200)
+        if circles is not None:
+            circles = np.uint16(np.around(circles))
+            for circle in circles[0,:]:
+                center = (circle[0],circle[1])
+                radius = circle[2]
+                cv.circle(img,center,radius,(0,0,255),3)
+        cv.imshow("webcam", img)
     if cv.waitKey(1) == ord('q'):  # stop capturing when user interrupts
         break
 
