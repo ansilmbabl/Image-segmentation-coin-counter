@@ -11,9 +11,12 @@ def DrawCircle(image, preprocess_image, dp=1, minDist=90, param1=50, param2=30, 
                               maxRadius=maxRadius)
     if circles is not None:
         circles = np.uint16(np.around(circles))
+        radii = {}
+        count = 1
         for circle in circles[0, :]:
             center = (circle[0], circle[1])
             radius = circle[2]
-            cv.circle(image, center, radius, (0, 0, 255), 3)
-            window("webcam", image)
-            return {"center":center, "radius":radius}
+            image = cv.circle(image, center, radius, (0, 0, 255), 3)
+            radii['circle ' + str(count)] = radius
+            count += 1
+        return radii,image
