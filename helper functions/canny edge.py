@@ -2,7 +2,7 @@ import cv2 as cv
 import numpy as np
 
 # creating video capture object
-cap = cv.VideoCapture(0)
+cap = cv.VideoCapture('http://192.168.1.72:8080/video')
 
 
 def empty(a):  # function used as the parameter for cv.createTrackbar
