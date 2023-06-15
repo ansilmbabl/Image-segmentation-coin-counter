@@ -2,7 +2,7 @@ import cv2 as cv
 import numpy as np
 
 # creating video capture object (ip webcam)
-cap = cv.VideoCapture('http://192.168.1.71:8080/video')
+cap = cv.VideoCapture('http://192.168.1.72:8080/video')
 # resizing the output window
 cv.namedWindow('out', cv.WINDOW_NORMAL)
 cv.resizeWindow('out', 640, 360)
@@ -84,6 +84,7 @@ while cap.isOpened():
                     # add to coins list if color matched
                     coins.append((coin, area, x, y, w, h))
             # cv.imshow('contour' + str(i), hsv_roi)  # to see the detected coins in hsv
+            # cv.imshow('contour' + str(i), hsv_roi)  # to see the detected coins in rgb
 
     # counting coin values
     total = 0
@@ -135,4 +136,3 @@ while cap.isOpened():
 # release video capture object
 cap.release()
 cv.destroyAllWindows()
-
