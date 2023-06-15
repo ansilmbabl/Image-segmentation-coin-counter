@@ -136,6 +136,3 @@ while cap.isOpened():
 cap.release()
 cv.destroyAllWindows()
 
-# green = np.uint8([[[172,146,133]]])
-# hsv_green = cv.cvtColor(green,cv.COLOR_BGR2HSV)
-# print( hsv_green )
