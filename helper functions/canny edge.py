@@ -14,6 +14,18 @@ cv.resizeWindow('canny', 500, 50)
 cv.createTrackbar('st', 'canny', 0, 255, empty)
 cv.createTrackbar('en', 'canny', 100, 255, empty)
 
+
+cv.namedWindow('grey', cv.WINDOW_NORMAL)
+cv.resizeWindow('grey', 640, 360)
+cv.namedWindow('blur', cv.WINDOW_NORMAL)
+cv.resizeWindow('blur', 640, 360)
+cv.namedWindow('out', cv.WINDOW_NORMAL)
+cv.resizeWindow('out', 640, 360)
+cv.namedWindow('result', cv.WINDOW_NORMAL)
+cv.resizeWindow('result', 640, 360)
+cv.namedWindow('canny iamge', cv.WINDOW_NORMAL)
+cv.resizeWindow('canny iamge', 640, 360)
+
 while cap.isOpened():
     # reading current frame
     ret, image = cap.read()
@@ -35,6 +47,9 @@ while cap.isOpened():
     img = cv.morphologyEx(img, cv.MORPH_CLOSE, kernel)
 
     # displaying result
+    cv.imshow('grey', grey)
+    cv.imshow('blur',blur)
+    cv.imshow('canny iamge', canny)
     cv.imshow('out', image)  # output image
     cv.imshow('result', img)  # canny edge
 
