@@ -40,13 +40,13 @@ while cap.isOpened():
     ret, image = cap.read()
 
     # converting to grayscale
-    t1, t2 = cv.getTrackbarPos('st', 'canny'), cv.getTrackbarPos('en', 'canny')
     grey = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
 
     # Gaussian blur to reduce noise
     blur = cv.GaussianBlur(grey, (5, 5), 5)
 
     # canny edge detection
+    t1, t2 = cv.getTrackbarPos('st', 'canny'), cv.getTrackbarPos('en', 'canny')
     canny = cv.Canny(blur, t1, t2)
 
     # applying some morphological operations
