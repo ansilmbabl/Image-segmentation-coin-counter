@@ -60,3 +60,8 @@ The size and color of coins are the key component to differentiate between them.
 
 ### Note 
 Thresholds in Canny, HSV values, contour area etc are tunable parmaetrs. Some `helper functions` are provided to find these values, please tune those according to the situations
+
+### Contact
+📫 Reach me via [linkedIn](https://www.linkedin.com/in/ansilmbabl)<br>
+📧 Mail me at  ansilproabl@gmail.com
+
